@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgnjojsnybicd"]
+
+[ext_resource type="Script" uid="uid://nf6otl075q4y" path="res://menu.gd" id="1_yaljp"]
+[ext_resource type="Texture2D" uid="uid://c7tiowq6tkyy3" path="res://Assets/Fondos/Menu.jpg" id="2_1o48s"]
+[ext_resource type="AudioStream" uid="uid://c5eawqexjdkhq" path="res://Assets/Musica/VdeosinttuloHechoconClipchamp.mp3" id="3_cp6xf"]
+
+[node name="Creditod" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yaljp")
+
+[node name="titulo" type="TextEdit" parent="."]
+layout_mode = 0
+offset_right = 943.0
+offset_bottom = 158.0
+text = "La sombra de la plata"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = -3.0
+offset_right = 1284.0
+offset_bottom = 717.0
+texture = ExtResource("2_1o48s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = -20.0
+offset_right = 106.32001
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="Jugar" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Creador Marcelo Vera Garcia"
+
+[node name="Opciones" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Fondos : Image Creater"
+
+[node name="Salir" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Musica: Steel Ball Run"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_cp6xf")
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
+[connection signal="pressed" from="VBoxContainer/Opciones" to="." method="_on_opciones_pressed"]
+[connection signal="pressed" from="VBoxContainer/Salir" to="." method="_on_salir_pressed"]

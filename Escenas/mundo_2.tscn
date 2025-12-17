@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://cu0vfqucjg53s"]
+
+[ext_resource type="Script" uid="uid://dru1jphpbhfu8" path="res://Data/Objetos/Mundo/mundo.gd" id="1_qpcdr"]
+[ext_resource type="Texture2D" uid="uid://clvvlcc21fsgh" path="res://Assets/Fondos/mundo2.jpg" id="2_qpcdr"]
+[ext_resource type="PackedScene" uid="uid://b8bqxll8dgrmy" path="res://Personajes/Knight_1/personaje.tscn" id="3_hton8"]
+[ext_resource type="Script" uid="uid://rsl20f5lg1bp" path="res://Data/PersonajeData.gd" id="4_kqefx"]
+[ext_resource type="PackedScene" uid="uid://t38hf2atylw2" path="res://Personaje2.tscn" id="5_hton8"]
+
+[sub_resource type="Resource" id="Resource_obbdv"]
+script = ExtResource("4_kqefx")
+metadata/_custom_type_script = "uid://rsl20f5lg1bp"
+
+[node name="Mundo2" type="Node2D"]
+position = Vector2(-2, 3)
+script = ExtResource("1_qpcdr")
+
+[node name="fondo" type="Sprite2D" parent="."]
+position = Vector2(478.99994, 273)
+scale = Vector2(0.7515624, 0.75555557)
+texture = ExtResource("2_qpcdr")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(471, 268)
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(476, 267.5)
+scale = Vector2(1.6423612, 1.6697531)
+
+[node name="Personaje" parent="Node2D" instance=ExtResource("3_hton8")]
+position = Vector2(-148.56659, 33.83733)
+data = SubResource("Resource_obbdv")
+
+[node name="Personaje2" parent="Node2D" instance=ExtResource("5_hton8")]
+position = Vector2(128.47356, 34.436237)
+scale = Vector2(0.60887945, 0.59889096)
+
+[node name="iniciar mundo" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="iniciar mundo" to="." method="_on_iniciar_mundo_timeout"]

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="PersonajeData" load_steps=2 format=3 uid="uid://dl1mff41nbhmj"]
+
+[ext_resource type="Script" uid="uid://rsl20f5lg1bp" path="res://Data/PersonajeData.gd" id="1_ytspl"]
+
+[resource]
+script = ExtResource("1_ytspl")
+metadata/_custom_type_script = "uid://rsl20f5lg1bp"

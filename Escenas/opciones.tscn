@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://c40g16gif8qae"]
+
+[ext_resource type="Script" uid="uid://51d1o8v4j5fh" path="res://Escenas/opciones.gd" id="1_56tvd"]
+[ext_resource type="Texture2D" uid="uid://c7tiowq6tkyy3" path="res://Assets/Fondos/Menu.jpg" id="2_0pt6o"]
+[ext_resource type="AudioStream" uid="uid://c5eawqexjdkhq" path="res://Assets/Musica/VdeosinttuloHechoconClipchamp.mp3" id="3_0pt6o"]
+
+[node name="Opciones" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_56tvd")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_0pt6o")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = -20.0
+offset_right = 106.32001
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+min_value = -40.0
+max_value = 0.0
+
+[node name="Resolucion" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Resolucion"
+
+[node name="Regresar" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Regresar"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_0pt6o")
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/Resolucion" to="." method="_on_resolucion_pressed"]
+[connection signal="pressed" from="VBoxContainer/Resolucion" to="." method="_on_opciones_pressed"]
+[connection signal="pressed" from="VBoxContainer/Regresar" to="." method="_on_regresar_pressed"]
+[connection signal="pressed" from="VBoxContainer/Regresar" to="." method="_on_salir_pressed"]

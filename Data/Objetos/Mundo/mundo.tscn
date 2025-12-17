@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://2ikknaj2u4ua"]
+
+[ext_resource type="Texture2D" uid="uid://6ie16ai46deb" path="res://Assets/Fondos/orig.png" id="1_5b1rr"]
+[ext_resource type="Script" uid="uid://dru1jphpbhfu8" path="res://Data/Objetos/Mundo/mundo.gd" id="1_obbdv"]
+[ext_resource type="PackedScene" uid="uid://b8bqxll8dgrmy" path="res://Personajes/Knight_1/personaje.tscn" id="2_478kj"]
+[ext_resource type="Script" uid="uid://rsl20f5lg1bp" path="res://Data/PersonajeData.gd" id="5_lfldq"]
+[ext_resource type="Resource" uid="uid://b51sjtn77foad" path="res://Data/Enemigos/caballeroenemigo.tres" id="5_xrquv"]
+[ext_resource type="AudioStream" uid="uid://mpdex4wf7hqc" path="res://Assets/Musica/Steel Ball Run Teaser Trailer OST - JoJo's Bizarre Adventure - Rock HQ Cover スティールボールラン.mp3" id="6_ih1d0"]
+
+[sub_resource type="Resource" id="Resource_obbdv"]
+script = ExtResource("5_lfldq")
+metadata/_custom_type_script = "uid://rsl20f5lg1bp"
+
+[node name="Mundo" type="Node2D"]
+position = Vector2(-2, 3)
+script = ExtResource("1_obbdv")
+
+[node name="fondo" type="Sprite2D" parent="."]
+position = Vector2(473.00003, 270.00003)
+scale = Vector2(1.6423612, 1.6697531)
+texture = ExtResource("1_5b1rr")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(471, 268)
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(476, 267.5)
+scale = Vector2(1.6423612, 1.6697531)
+
+[node name="Personaje" parent="Node2D" instance=ExtResource("2_478kj")]
+position = Vector2(-157.09091, 30.842875)
+data = SubResource("Resource_obbdv")
+
+[node name="Personaje2" parent="Node2D" instance=ExtResource("2_478kj")]
+position = Vector2(275.2135, 29.645094)
+data = ExtResource("5_xrquv")
+
+[node name="iniciar mundo" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ih1d0")
+autoplay = true
+
+[connection signal="timeout" from="iniciar mundo" to="." method="_on_iniciar_mundo_timeout"]
